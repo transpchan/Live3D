@@ -1,6 +1,6 @@
 # Live3D
 
-Stay tuned.
+Stay tuned for the paper and code release.
 
 Discord https://discord.gg/Md3cykbn36
 Twitter https://twitter.com/transpchan
