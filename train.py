@@ -102,10 +102,11 @@ def infer(args, humanflowmodel, image_names_list):
 
         train_time_interval = time.time() - time_stamp
         time_stamp = time.time()
-        print("[infer batch: %5d/%5d] time:%2f+%2f" % (
-            i, train_num,
-            data_time_interval, train_time_interval
-        ))
+        if i%5==0:
+            print("[infer batch: %5d/%5d] time:%2f+%2f" % (
+                i, train_num,
+                data_time_interval, train_time_interval
+            ))
         with torch.no_grad():
 
             if args.test_output_video:
