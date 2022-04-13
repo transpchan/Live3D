@@ -154,9 +154,9 @@ class CoNR():
         self.eval()
         with torch.cuda.amp.autocast(enabled=bool(self.args.use_amp)):
             pred = {}
+            pred = self.character_parser_forward(data, pred)
             pred = self.pose_parser_sc_forward(data, pred)
             pred = self.shader_pose_encoder_forward(data, pred)
-            pred = self.character_parser_forward(data, pred)
             pred = self.shader_forward(data, pred)
         return pred
 
