@@ -151,6 +151,9 @@ class CoNR():
                         data["character_images"].shape[0])
         return data
 
+    def reset_charactersheet(self):
+        self.parser_ckpt = None
+
     def model_step(self, data, training=False):
         self.eval()
         with torch.cuda.amp.autocast(enabled=bool(self.args.use_amp)):

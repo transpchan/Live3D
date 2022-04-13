@@ -99,6 +99,7 @@ def infer(args, humanflowmodel, image_names_list):
                 [data["character_masks"], *prev_frame_a], dim=1)
             data = humanflowmodel.data_norm_image(data)
             pred = humanflowmodel.model_step(data, training=False)
+            # remember to call  humanflowmodel.reset_charactersheet() if you change character .
 
         train_time_interval = time.time() - time_stamp
         time_stamp = time.time()
