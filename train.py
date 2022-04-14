@@ -12,6 +12,16 @@ from data_loader import (FileDataset,
                          RandomResizedCropWithAutoCenteringAndZeroPadding)
 from conr import CoNR
 
+def data_sampler(dataset, shuffle, distributed):
+
+    if distributed:
+        return torch.utils.data.distributed.DistributedSampler(dataset, shuffle=shuffle)
+
+    if shuffle:
+        return torch.utils.data.RandomSampler(dataset)
+
+    else:
+        return torch.utils.data.SequentialSampler(dataset)
 
 def save_output(image_name, inputs_v, d_dir=".", crop=None):
     import cv2
@@ -77,9 +87,10 @@ def infer(args, humanflowmodel, image_names_list):
                                       shader_pose_use_gt_udp_test=not args.shader_pose_use_parser_udp_test,
                                       shader_target_use_gt_rgb_debug=False
                                       )
+    
     train_data = DataLoader(test_salobj_dataset,
                             batch_size=1,
-                            shuffle=False,
+                            shuffle=False,sampler=sampler, 
                             num_workers=args.dataloaders)
 
     # start testing
