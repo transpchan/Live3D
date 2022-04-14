@@ -10,6 +10,7 @@ from torch.utils.data import DataLoader
 from torchvision import transforms
 from data_loader import (FileDataset,
                          RandomResizedCropWithAutoCenteringAndZeroPadding)
+from torch.utils.data.distributed import DistributedSampler
 from conr import CoNR
 
 
@@ -49,7 +50,6 @@ def test():
             else:
                 print("skipping empty folder :"+thissource)
     image_names_list = []
-
     for eachlist in source_names_list:
         for name in sorted(os.listdir(args.test_input_poses_images)):
             thistarget = os.path.join(args.test_input_poses_images, name)
@@ -78,6 +78,7 @@ def infer(args, humanflowmodel, image_names_list):
                                       shader_target_use_gt_rgb_debug=False
                                       )
     train_data = DataLoader(test_salobj_dataset,
+                            sampler = DistributedSampler(test_salobj_dataset),
                             batch_size=1,
                             shuffle=False,
                             num_workers=args.dataloaders)

@@ -52,11 +52,9 @@ def resnet_fastai(model, pretrained,  url, replace_first_layer=None, replace_max
         if replace_first_layer is not None:
             for each in list(state.keys()).copy():
                 if each.find("0.0.") == 0:
-                    print(each)
                     del state[each]
         body_tail = nn.Sequential(body)
         ret = body_tail.load_state_dict(state, strict=False)
-        # print(ret)
     return body
 
 
@@ -103,7 +101,6 @@ def get_backbone(name, pretrained=True, map_location=None):
     else:
         raise NotImplemented(
             '{} backbone model is not implemented so far.'.format(name))
-    print(backbone)
     # specifying skip feature and output names
     if name.startswith('resnet'):
         feature_names = [None, 'relu', 'layer1', 'layer2', 'layer3']
@@ -217,12 +214,10 @@ class ResEncUnet(nn.Module):
         decoder_filters_in = [bb_out_chs] + list(decoder_filters[:-1])
         num_blocks = len(self.shortcut_features)
         for i, [filters_in, filters_out] in enumerate(zip(decoder_filters_in, decoder_filters)):
-            #print('upsample_blocks[{}] in: {}   out: {}'.format(i, filters_in, filters_out))
             self.upsample_blocks.append(UpsampleBlock(filters_in, filters_out,
                                                       skip_in=shortcut_chs[num_blocks-i-1],
                                                       parametric=parametric_upsampling,
                                                       use_bn=decoder_use_instancenorm))
-        print(self.upsample_blocks)
         self.final_conv = nn.Conv2d(
             decoder_filters[-1], classes, kernel_size=(1, 1))
 
