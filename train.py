@@ -90,7 +90,6 @@ def infer(args, humanflowmodel, image_names_list):
     sampler = data_sampler(test_salobj_dataset, shuffle=False,
                            distributed=args.distributed)
     train_data = DataLoader(test_salobj_dataset,
-                            sampler = DistributedSampler(test_salobj_dataset),
                             batch_size=1,
                             shuffle=False,sampler=sampler, 
                             num_workers=args.dataloaders)
