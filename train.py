@@ -13,6 +13,16 @@ from data_loader import (FileDataset,
 from torch.utils.data.distributed import DistributedSampler
 from conr import CoNR
 
+def data_sampler(dataset, shuffle, distributed):
+
+    if distributed:
+        return torch.utils.data.distributed.DistributedSampler(dataset, shuffle=shuffle)
+
+    if shuffle:
+        return torch.utils.data.RandomSampler(dataset)
+
+    else:
+        return torch.utils.data.SequentialSampler(dataset)
 
 def save_output(image_name, inputs_v, d_dir=".", crop=None):
     import cv2
@@ -77,10 +87,12 @@ def infer(args, humanflowmodel, image_names_list):
                                       shader_pose_use_gt_udp_test=not args.shader_pose_use_parser_udp_test,
                                       shader_target_use_gt_rgb_debug=False
                                       )
+    sampler = data_sampler(test_salobj_dataset, shuffle=False,
+                           distributed=args.distributed)
     train_data = DataLoader(test_salobj_dataset,
                             sampler = DistributedSampler(test_salobj_dataset),
                             batch_size=1,
-                            shuffle=False,
+                            shuffle=False,sampler=sampler, 
                             num_workers=args.dataloaders)
 
     # start testing
@@ -100,13 +112,15 @@ def infer(args, humanflowmodel, image_names_list):
                 [data["character_masks"], *prev_frame_a], dim=1)
             data = humanflowmodel.data_norm_image(data)
             pred = humanflowmodel.model_step(data, training=False)
+            # remember to call  humanflowmodel.reset_charactersheet() if you change character .
 
         train_time_interval = time.time() - time_stamp
         time_stamp = time.time()
-        print("[infer batch: %5d/%5d] time:%2f+%2f" % (
-            i, train_num,
-            data_time_interval, train_time_interval
-        ))
+        if i%5==0:
+            print("[infer batch: %5d/%5d] time:%2f+%2f" % (
+                i, train_num,
+                data_time_interval, train_time_interval
+            ))
         with torch.no_grad():
 
             if args.test_output_video:

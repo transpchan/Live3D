@@ -101,6 +101,10 @@ def get_backbone(name, pretrained=True, map_location=None):
     else:
         raise NotImplemented(
             '{} backbone model is not implemented so far.'.format(name))
+<<<<<<< HEAD
+=======
+    #print(backbone)
+>>>>>>> f9e7cc9a59950158506de11dead6c87f6311abcc
     # specifying skip feature and output names
     if name.startswith('resnet'):
         feature_names = [None, 'relu', 'layer1', 'layer2', 'layer3']

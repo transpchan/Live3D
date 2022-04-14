@@ -21,5 +21,6 @@ test_data
 *.png
 logs
 saved_models
+weights
 tb*
 *.pth

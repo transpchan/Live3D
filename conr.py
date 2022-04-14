@@ -39,6 +39,7 @@ class CoNR():
         self.rgbadecodernet = RGBADecoderNet(
         )
         self.device()
+        self.parser_ckpt = None
 
     def dist(self):
         args = self.args
@@ -129,7 +130,7 @@ class CoNR():
         self.rgbadecodernet.to(device)
 
     def data_norm_image(self, data):
-       
+
         with torch.cuda.amp.autocast(enabled=bool(self.args.use_amp)):
             for name in ["character_labels", "pose_label"]:
                 if name in data:
@@ -150,13 +151,20 @@ class CoNR():
                         data["character_images"].shape[0])
         return data
 
+    def reset_charactersheet(self):
+        self.parser_ckpt = None
+
     def model_step(self, data, training=False):
         self.eval()
         with torch.cuda.amp.autocast(enabled=bool(self.args.use_amp)):
             pred = {}
+            if self.parser_ckpt:
+                pred["parser"] = self.parser_ckpt
+            else:
+                pred = self.character_parser_forward(data, pred)
+                self.parser_ckpt = pred["parser"]
             pred = self.pose_parser_sc_forward(data, pred)
             pred = self.shader_pose_encoder_forward(data, pred)
-            pred = self.character_parser_forward(data, pred)
             pred = self.shader_forward(data, pred)
         return pred
 

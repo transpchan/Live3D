@@ -99,8 +99,8 @@ class CINN(nn.Module):
             self.decoder_blocks.append(
                 DecoderBlock(in_planes+each_target_feature_chns+each_feature_chns+each_in_locals_chn+each_in_msgs_chn, c=each_block_chn_num, block_nums=each_block_num, out_msgs=each_out_msgs_chn, out_locals=each_out_locals_chn, out_masks=2+each_out_locals_chn))
         for i in range(len(feature_chns), len(out_locals_chn)):
-            print("append extra block", i, "msg",
-                  out_msgs_chn[i], "local", out_locals_chn[i], "block", block_num[i])
+            #print("append extra block", i, "msg",
+            #      out_msgs_chn[i], "local", out_locals_chn[i], "block", block_num[i])
             self.decoder_blocks.append(
                 DecoderBlock(in_planes+self.in_msgs_chn[i]+self.in_locals_chn[i], c=block_chn_num[i], block_nums=block_num[i], out_msgs=out_msgs_chn[i], out_locals=out_locals_chn[i], out_masks=2+out_msgs_chn[i], out_feat_flows=0))
 
