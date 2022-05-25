@@ -186,8 +186,8 @@ class FileDataset(Dataset):
                     label_np = np.load(bio, allow_pickle=True)[
                         'i'].astype(np.float32, copy=False)
                 else:
-                    label_np = cv2.imdecode(np.frombuffer(bio.read(
-                    ), np.uint8),  cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH | cv2.IMREAD_UNCHANGED)
+                    label_np = cv2.cvtColor(cv2.imdecode(np.frombuffer(bio.read(
+                    ), np.uint8),  cv2.IMREAD_ANYCOLOR | cv2.IMREAD_ANYDEPTH | cv2.IMREAD_UNCHANGED), cv2.COLOR_BGRA2RGBA)
             assert (4 == label_np.shape[2])
             # fake image out of valid label
             image_np = (label_np*255).clip(0, 255).astype(np.uint8, copy=False)
