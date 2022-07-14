@@ -1,6 +1,8 @@
 # Live3D v1 (CoNR)
 
-[Webpage](https://live3d.ml)
+### The project is maintained by [Megvii Research](https://github.com/megvii-research/CONR) since year 2022. Please forward all your questions there.
+
+## [Legacy Demo Pages (2021)](https://live3d.ml)
 
 [Discord](https://discord.gg/Md3cykbn36)
 [Twitter](https://twitter.com/transpchan)
