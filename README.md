@@ -8,10 +8,10 @@
         <br>
         <i>2022/02</i> CoNR is rejected by CVPR.
         <br>
-        <i>2022/07</i> CoNR is rejected by ECCV.
+        <i>2022/07</i> CoNR is <a href="https://github.com/transpchan/Live3D/blob/main/eccv.pdf">rejected by ECCV</a>.
         <br>
-        <i>2022/07</i> [Legacy Demo Pages (2021)](https://live3d.ml) Please check out <a href="https://github.com/megvii-research/CONR">our new page.</a>
-        
+       
+[Demo Pages](https://live3d.ml)
 [Discord](https://discord.gg/Md3cykbn36)
 [Twitter](https://twitter.com/transpchan)
 [Bilibili](https://space.bilibili.com/6418569)
