@@ -1,5 +1,7 @@
 # Live3D v1 (CoNR)
+**If you are interested in this project or Live3D v2, feel free to contact me!**
 
+[Email](mailto:transpchan@gmail.com) |
 [Discord](https://discord.gg/Md3cykbn36) |
 [Twitter](https://twitter.com/transpchan) |
 [Bilibili](https://space.bilibili.com/6418569)
@@ -28,6 +30,7 @@
 
 
 **Live3D v1 (CoNR) is no longer maintained by @transpchan starting from year 2022.  This repo is kept only for archival purposes.**
+
 **Please checkout the new repo at [Megvii Research](https://github.com/megvii-research/CONR), who makes [the video generation demo](https://transpchan.github.io/live3d)✨.**
 
 ![visitor](https://count.getloli.com/get/@live3d?theme=gelbooru)
