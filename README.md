@@ -32,6 +32,12 @@ Collaborative Neural Rendering using Anime Character Sheets
 
 <i>2022/08</i> Stay tuned for [Live3D v2](https://github.com/transpchan/Live3D-v2).
 
+<i>2022/08</i> @transpchan was kicked out from the authors of  [Live3Dv1](https://github.com/transpchan/Live3D) as I refused to continue submittion after seeing the [heart-breaking reviews](https://github.com/transpchan/Live3D) from ECCV22. 
+
+Further submission of Live3Dv1 will be done by former coauthors alone. Although our collaboration is broken, I still wish them good luck.
+
+<i>2022/10</i> Check out [Live3D v2](https://github.com/transpchan/Live3D-v2), CoNR with Attention: An Incremental Improvement for Anime Character Animation.
+
 
 **Live3D v1 (CoNR) is no longer maintained by @transpchan starting from year 2022.  This repo is kept only for archival purposes.**
 
