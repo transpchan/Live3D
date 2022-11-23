@@ -1,10 +1,14 @@
-# Live3D v1 (CoNR)
-**If you are interested in this project or Live3D v2, feel free to contact me!**
+# Live3D v1 (CoNR) [[superseded by Live3D v2](https://github.com/transpchan/Live3D-v2)]
 
+Collaborative Neural Rendering using Anime Character Sheets
+
+[Draft](https://github.com/transpchan/transpchan.github.io/blob/57efe17cdce35cf2c49c8d11ebd9bac108d1ac59/live3d/CoNR.pdf) | 
+[Code](https://github.com/transpchan/Live3D/tree/demo_master) |
 [Email](mailto:transpchan@gmail.com) |
 [Discord](https://discord.gg/Md3cykbn36) |
 [Twitter](https://twitter.com/transpchan) |
 [Bilibili](https://space.bilibili.com/6418569)
+
 
 
 ### Try it yourself!
